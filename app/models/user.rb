@@ -28,6 +28,22 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  def User.search(content, user_or_book, how_search)
+        if user_or_book == "1"
+            if how_search == "1"
+                    User.where(['name LIKE ?', "#{content}"])
+            elsif how_search == "2"
+                    User.where(['name LIKE ?', "%#{content}"])
+            elsif how_search == "3"
+                    User.where(['name LIKE ?', "#{content}%"])
+            elsif how_search == "4"
+                    User.where(['name LIKE ?', "%#{content}%"])
+            else
+                    User.all
+            end
+         end
+    end
+
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, length: {maximum: 20, minimum: 2}
   validates :introduction, length: {maximum: 50}
