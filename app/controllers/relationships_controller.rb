@@ -14,4 +14,5 @@ class RelationshipsController < ApplicationController
 	end
 
 	def followed
+	end
 end

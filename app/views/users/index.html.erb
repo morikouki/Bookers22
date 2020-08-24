@@ -25,7 +25,7 @@
 					<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 					<td><%= user.name %></td>
 					<td>
-						<% if following?(current_user) %>
+						<% if user.following?(current_user) %>
 							<%= link_to 'フォローを外す', user_relationship_path(user), method: :delete %>
 						<% else %>
 							<%= link_to 'フォローする', user_relationships_path(user), method: :post %>
